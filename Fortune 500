@@ -60,8 +60,6 @@ VALUES
 
 # Analysis: 
 
-
-
 select company_name,
 CASE WHEN healthcare_benefits = 1 THEN 'has_healthcare_benefits'
 ELSE ' no_healthcare_benefits' 
@@ -82,3 +80,22 @@ else 'less_avg'
 end as number_of_employees
 from fortune_companies
 where industry = 'Technology' ;
+
+select industry, sum(revenue) as total_revenue
+from fortune_companies
+group by industry
+having total_revenue <= 200 ;
+
+select company_name, round(avg(avg_employee_tenure), 0)as avg_tenure
+from fortune_companies
+group by company_name
+having avg_tenure >=7;
+
+
+SELECT industry, ROUND(AVG(revenue),1) as avg_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_revenue_billions>=200
+;
+
+
