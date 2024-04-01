@@ -95,7 +95,20 @@ having avg_tenure >=7;
 SELECT industry, ROUND(AVG(revenue),1) as avg_revenue_billions
 FROM fortune_companies
 GROUP BY industry
-HAVING avg_revenue_billions>=200
-;
+HAVING avg_revenue_billions>=200;
 
+select *
+from fortune_companies
+where paid_time_off_days < 15
+and maternity_leave_weeks > 6
+order by company_name desc ;
 
+select industry, 
+count (company_name) as number_of_companies
+from fortune_companies
+group by industry; 
+
+select company_name,
+max(employees)
+from fortune_companies
+where healthcare_benefits = 1;
